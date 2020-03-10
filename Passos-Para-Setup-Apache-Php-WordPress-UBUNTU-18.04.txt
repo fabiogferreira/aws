@@ -1,0 +1,43 @@
+*********************************************************************************************
+* ATENÇÃO: instruções para a versão 18.04 do Ubuntu
+* Para saber qual é a sua versão, basta executar o comando "sudo lsb_release -a"
+*
+* Caso sua versão NÃO FOR a 18.04, basta selecionar outro arquivo de instruções
+* Passos-Para-Setup-Apache-Php-WordPress-UBUNTU-14.04.txt
+* Passos-Para-Setup-Apache-Php-WordPress-UBUNTU-16.04.txt
+*********************************************************************************************
+
+sudo apt-get update
+
+sudo apt-get install apache2
+
+sudo systemctl enable apache2
+
+sudo apt-get install software-properties-common
+
+sudo add-apt-repository ppa:ondrej/php
+
+sudo apt-get update
+
+sudo apt-get install php7.0 libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-gd php7.0-intl php-pear php7.0-imap php7.0-mcrypt php7.0-ps php7.0-pspell php7.0-recode php7.0-sqlite3 php7.0-tidy php7.0-xmlrpc php7.0-xsl
+
+cd /var/www/html
+
+sudo wget http://wordpress.org/latest.tar.gz
+
+sudo tar -xzf latest.tar.gz
+
+sudo cp -r wordpress/* /var/www/html/
+
+sudo rm -rf wordpress
+
+sudo rm -rf latest.tar.gz
+
+sudo rm -rf index.html
+
+sudo chmod -R 755 wp-content
+
+sudo chown -R www-data:www-data wp-content
+
+sudo systemctl restart apache2
+
